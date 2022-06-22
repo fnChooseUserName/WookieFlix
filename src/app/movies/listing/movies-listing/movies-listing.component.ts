@@ -11,6 +11,8 @@ export class MoviesListingComponent implements OnInit {
 
   public moviesList: Movie[] = [];
 
+  public genreList: string[] = [];
+
   constructor(private _movieService: MovieService) { }
 
   public getMovieListing() {
@@ -22,6 +24,7 @@ export class MoviesListingComponent implements OnInit {
         Object.keys(jsonObject).forEach(m => {
           let movie = new Movie(jsonObject[m]);
           this.moviesList.push(movie);
+          this.listUniqueGenres(movie);
         });
 
         // Test data parsing
@@ -30,7 +33,25 @@ export class MoviesListingComponent implements OnInit {
           console.log(`Title: ${m.Title}, Rating: ${m.ImdbRating}`);
         });
 
+        // Sort list alphabetically
+        this.genreList.sort((a, b) => a.localeCompare(b));
+
+        // Test data parsing
+        // TODO: Remove
+        this.genreList.forEach(g => {
+          console.log(g);
+        });
+
       });
+  }
+
+  private listUniqueGenres (movie: Movie) {
+    let genres = movie.Genres;
+    genres.forEach(genre => {
+      if(!this.genreList.includes(genre)) {
+        this.genreList.push(genre);
+      }
+    });
   }
 
   ngOnInit(): void {

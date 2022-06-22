@@ -10,12 +10,17 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaterialModule } from './shared/material.module';
 import { MoviesListingComponent } from './movies/listing/movies-listing/movies-listing.component'
 import { HttpInterceptorService } from './services/http-interceptor.service';
+import { HeaderComponent } from './navigation/header/header.component';
 
+// Pipes
+import { GenrePipe } from './shared/genre.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MoviesListingComponent
+    MoviesListingComponent,
+    HeaderComponent,
+    GenrePipe
   ],
   imports: [
     BrowserModule,

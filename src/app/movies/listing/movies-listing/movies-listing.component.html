@@ -1,1 +1,9 @@
-<p>movies-listing works!</p>
+<div class="genre-containers">
+  <div *ngFor="let genre of genreList">
+    <p style="font-weight: bold;">{{ genre }}</p>
+    <div *ngFor="let movie of moviesList | genreFilter:genre">
+      <span> {{ movie.Title }} </span>
+    </div>
+    <br/>
+  </div>
+</div>
