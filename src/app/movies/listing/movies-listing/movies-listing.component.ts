@@ -15,11 +15,12 @@ export class MoviesListingComponent implements OnInit {
 
   constructor(private _movieService: MovieService) { }
 
-  public getMovieListing() {
-    this._movieService.getAllMovies()
+  public async getMovieListing() {
+
+    await this._movieService.getAllMovies()
       .subscribe((res: any) => {
 
-        var jsonObject = res.movies;
+        var jsonObject = res.body.movies;
 
         Object.keys(jsonObject).forEach(m => {
           let movie = new Movie(jsonObject[m]);

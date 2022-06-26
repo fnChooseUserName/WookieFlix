@@ -1,0 +1,18 @@
+<div *ngIf="movies" class="test-class">
+  <owl-carousel-o [options]="carouselOptions">
+    <ng-container *ngFor="let movie of movies">
+      <ng-template carouselSlide>
+        <div class="slide">
+          <mat-card class="test-card">
+            <mat-card-header>
+              <mat-card-title style="font-size:small">{{movie.Title}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <img src="{{movie.Poster}}" alt="">
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+</div>
