@@ -1,9 +1,12 @@
 <div class="genre-containers">
-  <div *ngFor="let genre of genreList">
-    <p style="font-weight: bold;">{{ genre }}</p>
-    <div *ngFor="let movie of moviesList | genreFilter:genre">
-      <span> {{ movie.Title }} </span>
+  <div class="genre-container" *ngFor="let genre of genreList">
+    <mat-toolbar color="accent">
+      <span class="genre-title">{{ genre }}</span>
+    </mat-toolbar>
+    <div class="carousel">
+      <app-carousel [movies]='moviesList | genreFilter: genre'></app-carousel>
     </div>
     <br/>
   </div>
 </div>
+

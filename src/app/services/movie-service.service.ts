@@ -1,6 +1,7 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
+import { Movie } from '../models/Movie';
 import { IMovieService } from './interfaces/movie-service.service';
 
 @Injectable({
@@ -14,8 +15,9 @@ export class MovieService implements IMovieService {
 
   }
 
-  getAllMovies(): any {
-    var response = this._httpClient.get<any>(this.URL);
+  getAllMovies(): Observable<HttpResponse<Movie[]>> {
+    var response = this._httpClient.get<any>(this.URL, { observe: 'response' });
+
     return response;
   }
 
