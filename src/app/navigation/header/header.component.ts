@@ -26,6 +26,18 @@ export class HeaderComponent implements OnInit {
   }
 
   public searchMovies() {
+    if(this.searchTerm) {
+      this._movieService.getAllMovies(this.searchTerm);
+      this.router.routeReuseStrategy.shouldReuseRoute = () => {
+        return false;
+      }
+      this.router.onSameUrlNavigation = 'reload';
+      this.router.navigate(['/listing']);
+    }
+  }
+
+  public reloadListing() {
+    this.searchTerm = '';
     this._movieService.getAllMovies(this.searchTerm);
     this.router.routeReuseStrategy.shouldReuseRoute = () => {
       return false;
