@@ -1,0 +1,16 @@
+<div *ngIf="genreList" class="genre-containers">
+  <div class="genre-container" *ngFor="let genre of genreList">
+    <mat-toolbar color="accent">
+      <span class="genre-title">{{ genre }}</span>
+    </mat-toolbar>
+    <div class="carousel">
+      <app-carousel [movies]='moviesList | genreFilter: genre'></app-carousel>
+    </div>
+    <br/>
+  </div>
+</div>
+
+<div *ngIf="genreList.length < 1" class="no-search-results">
+  <span>No results found</span>
+</div>
+
