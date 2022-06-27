@@ -15,44 +15,16 @@ export class MoviesListingComponent implements OnInit {
 
   constructor(private _movieService: MovieService) { }
 
-  public async getMovieListing() {
+  public getMovieListing() {
 
-    await this._movieService.getAllMovies()
-      .subscribe((res: any) => {
-
-        var jsonObject = res.body.movies;
-
-        Object.keys(jsonObject).forEach(m => {
-          let movie = new Movie(jsonObject[m]);
-          this.moviesList.push(movie);
-          this.listUniqueGenres(movie);
-        });
-
-        // Test data parsing
-        // TODO: Remove
-        this.moviesList.forEach(m => {
-          console.log(`Title: ${m.Title}, Rating: ${m.ImdbRating}`);
-        });
-
-        // Sort list alphabetically
-        this.genreList.sort((a, b) => a.localeCompare(b));
-
-        // Test data parsing
-        // TODO: Remove
-        this.genreList.forEach(g => {
-          console.log(g);
-        });
-
-      });
-  }
-
-  private listUniqueGenres (movie: Movie) {
-    let genres = movie.Genres;
-    genres.forEach(genre => {
-      if(!this.genreList.includes(genre)) {
-        this.genreList.push(genre);
-      }
+    this._movieService.movies.subscribe(movies => {
+      this.moviesList = movies;
     });
+
+    this._movieService.genres.subscribe(genres => {
+      this.genreList = genres;
+    })
+
   }
 
   ngOnInit(): void {

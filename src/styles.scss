@@ -1,6 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+$color-negative-rating: #ffc058 !default;
+$color-ok-rating: #ffc058 !default;
+$color-positive-rating: #ffc058 !default;
+$color-default-rating: #ffc058 !default;
+
+@import '~css-star-rating/scss/star-rating';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
 
 

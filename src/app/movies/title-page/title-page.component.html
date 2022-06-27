@@ -1,0 +1,46 @@
+<!-- <div class="title-page-container">
+  <span>{{ movie.Title }}</span> <br>
+  <span>Year: {{ movie.ReleasedOn | date: 'mediumDate' }} | Running Time: {{ movie.Length }} | Directed By: {{ movie.Director }}</span> <br>
+  <span>Cast: {{ movie.Cast }}</span>
+  <br><br><br>
+  <span>{{ movie.Overview }}</span>
+
+  <img src="{{ movie.Backdrop }}" alt="">
+</div> -->
+
+<div class="title-page-container">
+
+
+  <div class="center">
+    <div class="info-panel">
+      <div class="title-rating-row">
+        <span>{{ movie.Title }} ({{ movie.Classification }})</span>
+        <span class="spacer"></span>
+        <star-rating class="imdb-rating" [readOnly]="true" [starType]="'svg'" [rating]="getMovieRating()" [showHalfStars]="true"></star-rating>
+      </div>
+      <div class="date-runtime-director-row">
+        <span>Release Date: {{ movie.ReleasedOn | date: 'mediumDate' }}</span>
+        <span>Runtime: {{ movie.Length }}</span>
+        <span>Directed By: {{ movie.Director }}</span>
+      </div>
+      <div class="cast-row">
+        <span>Cast: {{ movie.Cast }}</span>
+      </div>
+      <div class="overview-row">
+        <span>{{ movie.Overview }}</span>
+      </div>
+
+    </div>
+  </div>
+  <div class="left">
+    <img src="{{ movie.Poster }}" class="title-page-image">
+  </div>
+  <div class="right">
+    <div class="exit-button">
+      <button mat-icon-button aria-label="Exit" (click)="exitTitlePage()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+
+</div>

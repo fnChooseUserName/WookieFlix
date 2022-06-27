@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Movie } from 'src/app/models/Movie';
 
@@ -9,7 +10,7 @@ import { Movie } from 'src/app/models/Movie';
 })
 export class CarouselComponent {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   @Input() movies: Movie[];
 
@@ -37,6 +38,10 @@ export class CarouselComponent {
         }
       },
       nav: true
+  }
+
+  public openTitlePage($movieId: any) {
+    this.router.navigate(['title-page'], {state: { Id: $movieId }});
   }
 
 }
