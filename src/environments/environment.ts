@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  BASE_URL: 'https://wookie.codesubmit.io/movies',
   authToken: 'Wookie2019'
 };
 

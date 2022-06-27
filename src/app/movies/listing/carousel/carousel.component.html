@@ -3,7 +3,7 @@
     <ng-container *ngFor="let movie of movies">
       <ng-template carouselSlide>
         <div class="slide">
-          <mat-card class="test-card">
+          <mat-card class="test-card" (click)="openTitlePage(movie.Id)">
             <mat-card-header>
               <mat-card-title style="font-size:small">{{movie.Title}}</mat-card-title>
             </mat-card-header>
